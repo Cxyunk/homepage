@@ -1,0 +1,10 @@
+# 原始简历文件（太大，不需要部署）
+陈新宇简历.docx
+resume_text.txt
+
+# 无关文件夹
+动物园/
+
+# 系统文件
+Thumbs.db
+.DS_Store

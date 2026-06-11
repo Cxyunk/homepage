@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈新宇 - 个人主页</title>
+    <meta name="description" content="陈新宇的个人主页。华南理工大学自动化专业本科在读，专注于深度学习、计算机视觉与机器人技术。" />
+    <meta name="keywords" content="陈新宇, 华南理工大学, 深度学习, 计算机视觉, ROS, 自动化, AI" />
+    <meta name="author" content="陈新宇" />
+    <meta property="og:title" content="陈新宇 - 个人主页" />
+    <meta property="og:image" content="头像.jpg" />
+    <meta property="og:site_name" content="陈新宇个人主页" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800;900&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== Reset & Core ===== */
+        *, *::before, *::after { box-sizing: border-box; padding: 0; margin: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: "Raleway", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+            font-size: 16px; line-height: 1.65; color: #484848;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 { color: #222; }
+        p { font-family: "Open Sans", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; line-height: 1.65; }
+        a, a:hover, a:focus { color: inherit; text-decoration: none; }
+        img { max-width: 100%; height: auto; }
+
+        .bg-gray { background-color: #f2f2f2; }
+
+        /* ===== Buttons ===== */
+        .main-btn {
+            display: inline-block; background-color: #222; padding: 10px 22px;
+            border: 2px solid #222; color: #fff !important; text-transform: uppercase;
+            transition: .2s background-color ease; font-size: 13px; font-weight: 600;
+            cursor: pointer; font-family: "Raleway", sans-serif; letter-spacing: 0.5px;
+        }
+        .main-btn:hover { color: #222 !important; background-color: transparent; }
+
+        /* ===== Navbar ===== */
+        nav.navbar {
+            position: fixed; width: 100%; top: 0; z-index: 999;
+            padding: 28px 0 18px;
+            transition: all .5s ease;
+        }
+        nav.navbar .container {
+            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1140px; margin: 0 auto; padding: 0 2rem;
+        }
+        nav.navbar .logo {
+            font-size: 22px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1px; color: #fff;
+        }
+        nav.navbar .nav-links { display: flex; align-items: center; gap: 0; }
+        nav.navbar .nav-item {
+            font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.85);
+            text-transform: uppercase; padding: 0 14px;
+            transition: color .3s ease;
+        }
+        nav.navbar .nav-item:hover { color: #fff; }
+        nav.navbar .nav-item .nav-link {
+            color: inherit; position: relative; padding: 0;
+        }
+        nav.navbar .nav-item .nav-link::before {
+            content: ""; position: absolute; width: 100%; height: 2px;
+            bottom: -4px; left: 0; background-color: #fff;
+            visibility: hidden; transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        nav.navbar .nav-item .nav-link.active::before,
+        nav.navbar .nav-item .nav-link:hover::before { visibility: visible; transform: scaleX(1); }
+        nav.navbar .nav-item:first-child { padding-left: 0; }
+        nav.navbar .nav-item:last-child { padding-right: 0; }
+
+        /* Scrolled state */
+        nav.navbar.scrolled {
+            position: fixed; padding: 12px 0;
+            background-color: #fff;
+            box-shadow: 0px 0px 18px 1px rgba(0,0,0,0.08);
+        }
+        nav.navbar.scrolled .logo { color: #222; }
+        nav.navbar.scrolled .nav-item { color: #555; }
+        nav.navbar.scrolled .nav-item:hover { color: #000; }
+        nav.navbar.scrolled .nav-item .nav-link::before { background-color: #222; }
+
+        /* Hamburger */
+        .navbar-toggler { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .navbar-toggler span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; transition: .3s; border-radius: 2px; }
+        nav.navbar.scrolled .navbar-toggler span { background: #222; }
+
+        /* ===== Banner / Hero ===== */
+        .banner {
+            width: 100%; min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #0f172a 60%, #1a1a2e 100%);
+            position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .banner::before {
+            content: ''; position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(99,102,241,0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(59,130,246,0.08) 0%, transparent 50%);
+            animation: bannerGlow 12s ease-in-out infinite;
+        }
+        @keyframes bannerGlow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1.2; }
+        }
+        /* Subtle grid */
+        .banner::after {
+            content: ''; position: absolute; inset: 0; opacity: 0.04;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        .banner-caption {
+            position: relative; z-index: 11; text-align: center;
+            padding: 0 2rem;
+        }
+        .banner-caption h1 {
+            font-size: clamp(40px, 8vw, 82px); font-weight: 900;
+            color: #fff; letter-spacing: -0.02em;
+            animation: bannerFadeIn 0.8s ease-out;
+        }
+        .banner-caption p {
+            font-size: clamp(18px, 3vw, 24px); color: rgba(255,255,255,0.8);
+            margin-top: 20px;
+            animation: bannerFadeIn 0.8s ease-out 0.2s both;
+        }
+        .banner-caption p span { color: #fff; font-weight: 600; }
+
+        @keyframes bannerFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typewriter */
+        .cd-headline { font-size: clamp(18px, 3vw, 24px); line-height: 1.6; }
+        .cd-headline.clip .cd-words-wrapper {
+            display: inline-block; position: relative; text-align: left;
+            overflow: hidden; vertical-align: top;
+        }
+        .cd-headline.clip .cd-words-wrapper::after {
+            content: ''; position: absolute; top: 8%; right: 0;
+            width: 2px; height: 84%; background-color: rgba(255,255,255,0.55);
+        }
+        .cd-headline.clip b {
+            opacity: 0; display: inline-block; position: absolute;
+            white-space: nowrap; left: 0; top: 0;
+        }
+        .cd-headline.clip b.is-visible { opacity: 1; position: relative; font-weight: 700; color: #fff; }
+        .cd-headline.clip .cd-words-wrapper b { transition: opacity 0.3s ease; }
+
+        .arrow {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            z-index: 11; animation: arrowBounce 2s ease-in-out infinite;
+        }
+        .arrow a { color: rgba(255,255,255,0.7); font-size: 28px; transition: color .3s; }
+        .arrow a:hover { color: #fff; }
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== Section Common ===== */
+        section { padding: 100px 0; }
+        section .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+
+        .heading { margin-bottom: 50px; }
+        .heading h6 { font-size: 15px; font-weight: 500; margin-bottom: 8px; text-transform: uppercase; color: #888; }
+        .heading h2 { font-size: 32px; font-weight: 600; text-transform: uppercase; }
+
+        /* ===== About Section ===== */
+        .about .row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 3rem; }
+        .about .about-img { flex: 0 0 320px; }
+        .about .about-img img {
+            width: 100%; border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+        }
+        .about .about-content { flex: 1; min-width: 300px; }
+        .about .about-heading { margin-bottom: 20px; }
+        .about .about-heading h2 { font-size: 28px; font-weight: 700; text-transform: uppercase; }
+        .about .about-content p { margin-bottom: 16px; color: #555; }
+        .about .info-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px 24px; margin-bottom: 24px; }
+        .about .info-item { display: flex; gap: 8px; font-size: 15px; color: #555; font-family: "Open Sans","PingFang SC","Microsoft YaHei",sans-serif; }
+        .about .info-item strong { color: #333; white-space: nowrap; }
+
+        /* ===== Timeline Cards ===== */
+        .timeline-card {
+            background: #fff; border-radius: 6px; padding: 30px 32px;
+            margin-bottom: 20px; border: 1px solid #eee;
+            transition: box-shadow .3s ease, transform .3s ease;
+        }
+        .timeline-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); transform: translateY(-1px); }
+        .timeline-card .tc-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+        .timeline-card .tc-title { font-size: 20px; font-weight: 700; color: #222; }
+        .timeline-card .tc-subtitle { font-size: 15px; color: #888; font-weight: 500; margin-top: 2px; }
+        .timeline-card .tc-date {
+            font-size: 13px; font-weight: 600; color: #999; text-transform: uppercase;
+            letter-spacing: 0.5px; white-space: nowrap;
+            background: #f5f5f5; padding: 6px 14px; border-radius: 20px;
+        }
+        .timeline-card .tc-body { color: #555; }
+        .timeline-card .tc-body ul { padding-left: 1.2rem; }
+        .timeline-card .tc-body li { margin-bottom: 8px; font-family: "Open Sans","PingFang SC","Microsoft YaHei",sans-serif; font-size: 15px; }
+        .timeline-card .tc-body li::marker { color: #222; }
+        .tc-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .tc-tag { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; background: #f2f2f2; color: #666; padding: 4px 12px; border-radius: 4px; font-family: "Raleway","PingFang SC",sans-serif; }
+
+        /* ===== Awards ===== */
+        .awards-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+        .award-row {
+            display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px;
+            background: #fff; border-radius: 6px; border: 1px solid #eee;
+            transition: box-shadow .3s ease, transform .3s ease;
+        }
+        .award-row:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); transform: translateY(-1px); }
+        .award-row .award-badge {
+            font-size: 11px; font-weight: 700; color: #fff; background: #222;
+            padding: 4px 10px; border-radius: 4px; white-space: nowrap;
+            text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0;
+        }
+        .award-row .award-text { font-size: 15px; color: #555; font-family: "Open Sans","PingFang SC","Microsoft YaHei",sans-serif; }
+        .award-row .award-text strong { color: #333; }
+
+        /* ===== Skills ===== */
+        .skills-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .skill-block { background: #fff; border-radius: 6px; padding: 28px 30px; border: 1px solid #eee; transition: box-shadow .3s ease; }
+        .skill-block:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+        .skill-block h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; color: #222; }
+        .skill-block p { font-size: 15px; color: #555; margin-bottom: 12px; }
+        .skill-block .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .skill-block .skill-tags span {
+            font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+            background: #f2f2f2; color: #666; padding: 5px 12px; border-radius: 4px;
+            font-family: "Raleway","PingFang SC",sans-serif;
+            transition: all .2s ease;
+        }
+        .skill-block .skill-tags span:hover { background: #222; color: #fff; }
+
+        /* ===== Footer ===== */
+        footer {
+            padding: 30px 2rem; text-align: center;
+            font-size: 13px; color: #999; font-family: "Open Sans", sans-serif;
+        }
+
+        /* ===== Scroll Reveal ===== */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 992px) {
+            .navbar-toggler { display: block; }
+            nav.navbar .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; right: 0;
+                background: #fff; flex-direction: column; padding: 16px 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            nav.navbar .nav-links.open { display: flex; }
+            nav.navbar .nav-item { color: #555 !important; padding: 10px 0 !important; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
+            nav.navbar .nav-item:last-child { border-bottom: none; }
+            nav.navbar .nav-item .nav-link::before { background-color: #222 !important; bottom: 0; }
+            .banner-caption h1 { font-size: 42px; }
+            .about .about-img { flex: 0 0 100%; max-width: 280px; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
+            section .container { padding: 0 1.2rem; }
+            .heading { margin-bottom: 32px; }
+            .heading h2 { font-size: 24px; }
+            .banner { min-height: 90vh; }
+            .banner-caption h1 { font-size: 36px; }
+            .timeline-card { padding: 20px; }
+            .tc-tags { gap: 4px; }
+            .skills-row { grid-template-columns: 1fr; }
+            .about .row { gap: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .banner-caption h1 { font-size: 28px; }
+            .banner-caption p { font-size: 16px; }
+            .cd-headline { font-size: 16px; }
+        }
+
+        /* ===== Print ===== */
+        @media print {
+            nav.navbar { display: none; }
+            .banner { min-height: auto; padding: 40px 0; background: #fff !important; }
+            .banner::before, .banner::after, .arrow { display: none; }
+            .banner-caption h1 { color: #222; font-size: 32px; }
+            .banner-caption p { color: #555; }
+            .cd-headline.clip b { color: #222; }
+            .cd-headline.clip .cd-words-wrapper::after { display: none; }
+            .timeline-card, .award-row, .skill-block { break-inside: avoid; box-shadow: none; }
+            body { color: #333; }
+            section { padding: 30px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a class="logo" href="#home">陈新宇</a>
+        <button class="navbar-toggler" id="navbarToggler" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <div class="nav-item"><a href="#home" class="nav-link active" data-nav="0">首页</a></div>
+            <div class="nav-item"><a href="#about" class="nav-link" data-nav="1">关于</a></div>
+            <div class="nav-item"><a href="#education" class="nav-link" data-nav="2">教育</a></div>
+            <div class="nav-item"><a href="#experience" class="nav-link" data-nav="3">经历</a></div>
+            <div class="nav-item"><a href="#awards" class="nav-link" data-nav="4">获奖</a></div>
+            <div class="nav-item"><a href="#skills" class="nav-link" data-nav="5">技能</a></div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== Banner / Hero ===== -->
+<section class="banner" id="home">
+    <div class="banner-caption">
+        <h1>Hi! 我是陈新宇.</h1>
+        <p class="cd-headline clip">
+            <span>SCUT 自动化 · 热爱</span>
+            <span class="cd-words-wrapper">
+                <b class="is-visible">深度学习.</b>
+                <b>计算机视觉.</b>
+                <b>机器人技术.</b>
+                <b>嵌入式系统.</b>
+            </span>
+        </p>
+    </div>
+    <div class="arrow">
+        <a href="#about" aria-label="Scroll down">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+    </div>
+</section>
+
+<!-- ===== About ===== -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="heading reveal">
+            <h6>About</h6>
+            <h2>关于我</h2>
+        </div>
+        <div class="row">
+            <div class="about-img reveal">
+                <img src="头像.jpg" alt="陈新宇" width="320" />
+            </div>
+            <div class="about-content reveal">
+                <div class="about-heading">
+                    <h2>陈新宇</h2>
+                </div>
+                <p>
+                    华南理工大学（985）自动化专业本科在读，GPA 3.41（前 47%）。专注于深度学习、计算机视觉与机器人技术，
+                    具备模型微调与训练经验，能快速适应前沿算法与模型落地。
+                </p>
+                <p>
+                    曾于浙江工业大学担任科研助理，参与视觉模型微调与小目标检测改进研究。
+                    热爱通过代码让机器理解世界，课余喜欢捣鼓机器人、参加数学建模竞赛。
+                </p>
+                <div class="info-row">
+                    <div class="info-item"><strong>📞 电话</strong> 18119440819</div>
+                    <div class="info-item"><strong>📧 邮箱</strong> 3310267024@qq.com</div>
+                    <div class="info-item"><strong>📍 地址</strong> 华南理工大学五山校区</div>
+                    <div class="info-item"><strong>🎂 生日</strong> 2005.02 · 180cm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Education ===== -->
+<section class="bg-gray" id="education">
+    <div class="container">
+        <div class="heading reveal">
+            <h6>Education</h6>
+            <h2>教育背景</h2>
+        </div>
+        <div class="timeline-card reveal">
+            <div class="tc-header">
+                <div>
+                    <div class="tc-title">华南理工大学 <span style="font-size:14px;color:#888;">(985工程)</span></div>
+                    <div class="tc-subtitle">自动化专业 · 本科</div>
+                </div>
+                <span class="tc-date">2023.09 – 至今</span>
+            </div>
+            <div class="tc-body">
+                <p><strong>GPA：</strong>3.41（前 47%）</p>
+                <p style="margin-top:8px;"><strong>主修课程：</strong>自动控制原理、过程控制系统与仪表、运动控制系统、反馈控制基础、电路、微机原理、嵌入式系统、C++、电力电子技术、模拟电子技术基础、数字电子技术基础</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Experience ===== -->
+<section id="experience">
+    <div class="container">
+        <div class="heading reveal">
+            <h6>Experience</h6>
+            <h2>实习 & 项目经历</h2>
+        </div>
+
+        <div class="timeline-card reveal">
+            <div class="tc-header">
+                <div>
+                    <div class="tc-title">浙江工业大学 · 科研助理</div>
+                    <div class="tc-subtitle">计算机视觉与深度学习</div>
+                </div>
+                <span class="tc-date">2025.03 – 2025.10</span>
+            </div>
+            <div class="tc-body">
+                <ul>
+                    <li><strong>模型微调与优化：</strong>通过 LoRA 及 Adapter 微调 ViT-Base Vision Encoder 每一层 Transformer 的 MLP，提升视觉编码器表达能力。</li>
+                    <li><strong>小目标检测改进：</strong>针对小目标检测难点，提出即插即用的 FPN 模块——加入图像自重建分支及高斯自重加分支，增强 Backbone 对小目标细节的挖掘能力，推理阶段不引入额外参数，准确率大幅提升。</li>
+                </ul>
+            </div>
+            <div class="tc-tags">
+                <span class="tc-tag">PyTorch</span><span class="tc-tag">ViT</span><span class="tc-tag">LoRA</span><span class="tc-tag">Object Detection</span><span class="tc-tag">FPN</span>
+            </div>
+        </div>
+
+        <div class="timeline-card reveal">
+            <div class="tc-header">
+                <div>
+                    <div class="tc-title">基于 ROS 的跳舞机器人</div>
+                    <div class="tc-subtitle">主要参与者</div>
+                </div>
+                <span class="tc-date">2025.12 – 2026.02</span>
+            </div>
+            <div class="tc-body">
+                <ul>
+                    <li><strong>音乐节拍识别：</strong>在 Webots 中搭建机器人模型，借助 beat_track 库通过短时傅里叶变换实现波形分析与音频特征提取。</li>
+                    <li><strong>实时姿态控制：</strong>通过运动规划实现实时动态姿态控制，精确控制机器人关节与身体各部分协调运动，完成仿真验证。</li>
+                </ul>
+            </div>
+            <div class="tc-tags">
+                <span class="tc-tag">ROS</span><span class="tc-tag">Webots</span><span class="tc-tag">C++</span><span class="tc-tag">Python</span><span class="tc-tag">Motion Planning</span>
+            </div>
+        </div>
+
+        <div class="timeline-card reveal">
+            <div class="tc-header">
+                <div>
+                    <div class="tc-title">华南理工大学教育技术中心</div>
+                    <div class="tc-subtitle">学生助理</div>
+                </div>
+                <span class="tc-date">2026.03 – 至今</span>
+            </div>
+            <div class="tc-body">
+                <ul>
+                    <li><strong>模型部署与微调：</strong>借助 LLaMA Factory 及 Ollama 在本地部署并微调 Qwen-VL 小参数模型，实现作业及手写公式的智能识别。</li>
+                    <li><strong>网站维护：</strong>负责教育技术中心网站的维护与测试，协助老师完成材料整理、数据统计及收发文件工作。</li>
+                </ul>
+            </div>
+            <div class="tc-tags">
+                <span class="tc-tag">LLaMA Factory</span><span class="tc-tag">Ollama</span><span class="tc-tag">Qwen-VL</span><span class="tc-tag">Model Fine-tuning</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Awards ===== -->
+<section class="bg-gray" id="awards">
+    <div class="container">
+        <div class="heading reveal">
+            <h6>Awards</h6>
+            <h2>获奖 & 证书</h2>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;" class="reveal">
+            <span style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;background:#fff;color:#555;padding:8px 16px;border-radius:20px;border:1px solid #ddd;">📝 CET-4 · 487</span>
+            <span style="font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;background:#fff;color:#555;padding:8px 16px;border-radius:20px;border:1px solid #ddd;">📝 CET-6 · 428</span>
+        </div>
+        <div class="awards-list">
+            <div class="award-row reveal">
+                <span class="award-badge">2024</span>
+                <div class="award-text">全国大学生数学建模竞赛 <strong>广东省一等奖</strong></div>
+            </div>
+            <div class="award-row reveal">
+                <span class="award-badge">2024</span>
+                <div class="award-text">亚太地区数学建模竞赛 <strong>二等奖</strong></div>
+            </div>
+            <div class="award-row reveal">
+                <span class="award-badge">2024</span>
+                <div class="award-text">大湾区粤港澳数学金融建模竞赛 <strong>广东省二等奖</strong></div>
+            </div>
+            <div class="award-row reveal">
+                <span class="award-badge">2024</span>
+                <div class="award-text">全国大学生数学竞赛 <strong>广东省三等奖</strong></div>
+            </div>
+            <div class="award-row reveal">
+                <span class="award-badge">2024</span>
+                <div class="award-text">华南理工大学赛元杯电子设计大赛 <strong>初级组三等奖</strong></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Skills ===== -->
+<section id="skills">
+    <div class="container">
+        <div class="heading reveal">
+            <h6>Skills</h6>
+            <h2>专业技能</h2>
+        </div>
+        <div class="skills-row">
+            <div class="skill-block reveal">
+                <h3>深度学习 & 计算机视觉</h3>
+                <p>熟练使用 PyTorch、MMDetection、Ultralytics 框架；掌握 CNN、Transformer 等常见视觉架构；了解 Diffusion Model 系列文生图模型；具备模型微调与训练经验，能快速适应前沿算法与模型落地。</p>
+                <div class="skill-tags">
+                    <span>PyTorch</span><span>MMDetection</span><span>Ultralytics</span><span>CNN</span><span>Transformer</span><span>Diffusion</span>
+                </div>
+            </div>
+            <div class="skill-block reveal">
+                <h3>ROS & 机器人开发</h3>
+                <p>熟练使用 C++ 及 Python 进行开发；具有机器人技术（ROS）、计算机视觉（OpenCV、PyTorch）相关实践经验；参与嵌入式相关比赛，具备完整的感知-规划-控制开发能力。</p>
+                <div class="skill-tags">
+                    <span>C++</span><span>Python</span><span>ROS</span><span>OpenCV</span><span>Webots</span><span>嵌入式</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+    <p>&copy; 2026 陈新宇 · 感谢您的关注</p>
+</footer>
+
+<script>
+    // ===== Typewriter Effect =====
+    (function() {
+        const wordsWrapper = document.querySelector('.cd-words-wrapper');
+        if (!wordsWrapper) return;
+        const words = wordsWrapper.querySelectorAll('b');
+        let idx = 0;
+
+        // Initialize: all hidden except first
+        words.forEach((w, i) => { if (i !== 0) w.classList.remove('is-visible'); });
+
+        function nextWord() {
+            const current = words[idx];
+            idx = (idx + 1) % words.length;
+            const next = words[idx];
+
+            // Hide current
+            current.classList.remove('is-visible');
+            // Show next
+            next.classList.add('is-visible');
+        }
+
+        setInterval(nextWord, 2200);
+    })();
+
+    // ===== Navbar Scroll =====
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('navbarToggler');
+    const navLinks = document.getElementById('navLinks');
+    const navItems = navLinks.querySelectorAll('.nav-link');
+    const sections = [];
+    navItems.forEach(link => {
+        const id = link.getAttribute('href');
+        if (id.startsWith('#')) {
+            const el = document.getElementById(id.substring(1));
+            if (el) sections.push({ link, el });
+        }
+    });
+
+    function updateNav() {
+        const y = window.scrollY;
+        // Fixed nav style
+        navbar.classList.toggle('scrolled', y > 60);
+
+        // Active section
+        let current = sections[0];
+        for (const s of sections) {
+            if (y >= s.el.offsetTop - 120) current = s;
+        }
+        navItems.forEach(l => l.classList.remove('active'));
+        if (current) current.link.classList.add('active');
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // Mobile toggle
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('.nav-item a').forEach(a => {
+        a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // ===== Scroll Reveal =====
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Stagger award items
+    document.querySelectorAll('.awards-list .reveal').forEach((el, i) => {
+        el.style.transitionDelay = (i * 0.05) + 's';
+    });
+</script>
+</body>
+</html>

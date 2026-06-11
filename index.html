@@ -98,29 +98,19 @@
         /* ===== Banner / Hero ===== */
         .banner {
             width: 100%; min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #0f172a 60%, #1a1a2e 100%);
             position: relative; overflow: hidden;
             display: flex; align-items: center; justify-content: center;
         }
         .banner::before {
-            content: ''; position: absolute; inset: 0;
-            background:
-                radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(99,102,241,0.10) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(59,130,246,0.08) 0%, transparent 50%);
-            animation: bannerGlow 12s ease-in-out infinite;
+            content: ''; position: absolute; inset: -40px;
+            background: url('bg.jpg') center/cover no-repeat;
+            filter: blur(8px) brightness(0.45);
+            z-index: 0;
         }
-        @keyframes bannerGlow {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1.2; }
-        }
-        /* Subtle grid */
         .banner::after {
-            content: ''; position: absolute; inset: 0; opacity: 0.04;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
-            background-size: 80px 80px;
+            content: ''; position: absolute; inset: 0;
+            background: rgba(0,0,0,0.25);
+            z-index: 1;
         }
 
         .banner-caption {
@@ -331,7 +321,7 @@
 <!-- ===== Banner / Hero ===== -->
 <section class="banner" id="home">
     <div class="banner-caption">
-        <h1>Hi! 我是陈新宇.</h1>
+        <h1>Hi! I'm yank.</h1>
         <p class="cd-headline clip">
             <span>SCUT 自动化 · 热爱</span>
             <span class="cd-words-wrapper">
@@ -365,7 +355,7 @@
                     <h2>陈新宇</h2>
                 </div>
                 <p>
-                    华南理工大学（985）自动化专业本科在读，GPA 3.41（前 47%）。专注于深度学习、计算机视觉与机器人技术，
+                    华南理工大学（985）自动化专业本科在读。专注于深度学习、计算机视觉与机器人技术，
                     具备模型微调与训练经验，能快速适应前沿算法与模型落地。
                 </p>
                 <p>
@@ -399,8 +389,7 @@
                 <span class="tc-date">2023.09 – 至今</span>
             </div>
             <div class="tc-body">
-                <p><strong>GPA：</strong>3.41（前 47%）</p>
-                <p style="margin-top:8px;"><strong>主修课程：</strong>自动控制原理、过程控制系统与仪表、运动控制系统、反馈控制基础、电路、微机原理、嵌入式系统、C++、电力电子技术、模拟电子技术基础、数字电子技术基础</p>
+                                <p style="margin-top:8px;"><strong>主修课程：</strong>自动控制原理、过程控制系统与仪表、运动控制系统、反馈控制基础、电路、微机原理、嵌入式系统、C++、电力电子技术、模拟电子技术基础、数字电子技术基础</p>
             </div>
         </div>
     </div>
@@ -504,6 +493,18 @@
             <div class="award-row reveal">
                 <span class="award-badge">2024</span>
                 <div class="award-text">华南理工大学赛元杯电子设计大赛 <strong>初级组三等奖</strong></div>
+            </div>
+            <div class="award-row reveal">
+                <span class="award-badge">2026</span>
+                <div class="award-text">美国大学生数学建模竞赛 <strong>Honorable Mention</strong></div>
+            </div>
+            <div class="award-row reveal">
+                <span class="award-badge">2026</span>
+                <div class="award-text">统计建模大赛 <strong>广东省一等奖</strong></div>
+            </div>
+            <div class="award-row reveal">
+                <span class="award-badge">2026</span>
+                <div class="award-text">华南理工大学智能控制大赛 <strong>高级组三等奖</strong></div>
             </div>
         </div>
     </div>
